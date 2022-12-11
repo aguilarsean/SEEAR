@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="{% static "image\logo.png"%}"
+    type="image/x-icon"> <link rel="stylesheet" href="{% static "style.css"%}"
+    />
+    <title>Seear</title>
+  </head>
+  <body>
+    <ul class="nav" id="nav">
+      <div class="left-nav">
+        <li class="li"><a class="active" href="{% url 'home' %}">Home</a></li>
+        <li class="li"><a href="{% url 'translation' %}">Translate</a></li>
+        {% comment %}
+        <li class="li"><a href="{% url 'contact' %}">Contact</a></li>
+        <li class="li"><a href="{% url 'about' %}">About</a></li>
+        {% endcomment %}
+      </div>
+
+      <div class="right-nav">
+        {% if not user.is_authenticated %}
+        <li class="li"><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %} {% if user.is_authenticated %}
+        <li class="li"><a href="{% url 'logout' %}">Log-Out</a></li>
+        {% else %}
+        <li class="li"><a href="{% url 'login' %}">Log-in</a></li>
+        {% endif %}
+      </div>
+    </ul>
+
+    <div class="wrapper">{% block content %} {% endblock %}</div>
+  </body>
+</html>

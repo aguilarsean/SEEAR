@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% load static %} {% block content %} {% comment %}
+<video width="500" height="380" class="center" autoplay loop>
+  <source src="{% static 'Hello.mp4' %}" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+{% endcomment %}
+<div class="form-style">
+  <a href="{% url 'translation' %}"
+    ><button class="button">Translate now</button></a
+  >
+</div>
+{% endblock %}
